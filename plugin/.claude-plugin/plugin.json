@@ -1,0 +1,9 @@
+{
+  "name": "quire",
+  "version": "1.0.0",
+  "description": "Upload images pasted into Claude Code directly to Quire documents.",
+  "author": {
+    "name": "Black Airplane"
+  },
+  "homepage": "https://github.com/Black-Airplane/quire-agent-plugin"
+}

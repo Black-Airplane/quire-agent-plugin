@@ -1,0 +1,46 @@
+{
+  "description": "Forwards original Claude Code pasted-image bytes to Quire without model-generated base64.",
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "mcp__quire__attach_image",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node",
+            "args": ["${CLAUDE_PLUGIN_ROOT}/scripts/prepare-document-image.mjs"],
+            "timeout": 10,
+            "statusMessage": "Securing the Quire pasted-image upload…"
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "mcp__quire__attach_image",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node",
+            "args": ["${CLAUDE_PLUGIN_ROOT}/scripts/upload-document-image.mjs"],
+            "timeout": 60,
+            "statusMessage": "Uploading the original pasted image to Quire…"
+          }
+        ]
+      }
+    ],
+    "PostToolUseFailure": [
+      {
+        "matcher": "mcp__quire__attach_image",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node",
+            "args": ["${CLAUDE_PLUGIN_ROOT}/scripts/cleanup-document-image.mjs"],
+            "timeout": 10
+          }
+        ]
+      }
+    ]
+  }
+}

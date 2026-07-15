@@ -1,0 +1,20 @@
+{
+  "name": "black-airplane",
+  "owner": {
+    "name": "Black Airplane"
+  },
+  "description": "Official agent integrations for Black Airplane products.",
+  "plugins": [
+    {
+      "name": "quire",
+      "source": "./plugin",
+      "description": "Adds first-class Claude Code pasted-image uploads to the Quire MCP integration.",
+      "author": {
+        "name": "Black Airplane"
+      },
+      "repository": "https://github.com/Black-Airplane/quire-agent-plugin",
+      "license": "MIT",
+      "category": "Productivity"
+    }
+  ]
+}
