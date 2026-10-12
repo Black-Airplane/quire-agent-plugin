@@ -12,7 +12,7 @@ This plugin lets Claude Code add PNG, JPEG, and WebP images pasted into a conver
 
 ```bash
 claude plugin marketplace add Black-Airplane/quire-agent-plugin
-claude plugin install quire@black-airplane
+claude plugin install quire@quire
 claude mcp add --transport http quire https://YOUR-QUIRE-HOST/mcp
 ```
 
@@ -25,11 +25,21 @@ Open `/mcp` in Claude Code and authenticate Quire, then run:
 Already installed? Update the marketplace and plugin, then reload:
 
 ```bash
-claude plugin marketplace update black-airplane
-claude plugin update quire@black-airplane
+claude plugin marketplace update quire
+claude plugin update quire@quire
 ```
 
 Existing Claude Code sessions keep using the previous plugin version until `/reload-plugins` runs.
+
+Installed it as `quire@black-airplane`? The marketplace is now named `quire` so it no longer collides with other Black Airplane plugins. Reinstall once:
+
+```bash
+claude plugin uninstall quire@black-airplane
+claude plugin marketplace add Black-Airplane/quire-agent-plugin
+claude plugin install quire@quire
+```
+
+Then check `claude plugin marketplace list`. If `black-airplane` still points to `Black-Airplane/quire-agent-plugin`, remove it with `claude plugin marketplace remove black-airplane`. Leave it alone if it points to another Black Airplane repository.
 
 ## Use
 
@@ -49,7 +59,7 @@ Private keys are stored with `0600` permissions, stale keys are pruned, redirect
 
 ## Troubleshooting
 
-- **“plugin required” or missing bridge key:** update `quire@black-airplane`, run `/reload-plugins`, and retry once.
+- **“plugin required” or missing bridge key:** update `quire@quire`, run `/reload-plugins`, and retry once.
 - **Image not available:** use the exact `Image #N` label from the current Claude Code conversation. Re-paste the image if the transcript no longer contains it.
 - **Capability expired or already used:** retry the attachment. Capabilities expire after two minutes and cannot be replayed.
 - **Invalid image:** confirm the image is PNG, JPEG, or WebP, no larger than 10 MiB, and no larger than 64 megapixels.

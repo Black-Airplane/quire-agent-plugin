@@ -1,9 +1,9 @@
 {
-  "name": "black-airplane",
+  "name": "quire",
   "owner": {
     "name": "Black Airplane"
   },
-  "description": "Official agent integrations for Black Airplane products.",
+  "description": "Official Claude Code integrations for Quire.",
   "plugins": [
     {
       "name": "quire",
